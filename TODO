@@ -1,0 +1,29 @@
+notes from the wiki page:
+
+Bugs
+
+    * parsing some dates gives N/A
+    * null exception sometimes when the page has no message displayed
+    * only tested for some display mode of the index and message page
+          o test expanded display mode
+          o test topic view mode
+
+Future
+
+    * embeddable into freecycle mod extension
+    * add yui compontents
+    * logging for debugging
+    * packaging
+    * auto-update
+    * chrome for control panel, info, etc.
+    * unit tests to allow regression and code cleanup
+    * colorize header lines by isp/company (y! purple, etc.)
+    * control panel to select settings
+    * cache page lookup to avoid refetching the same headers over and over
+
+Possible Y!Groups Code Updates
+
+    * clean xml page for raw message format without other markup of headers
+    * same sort of thing, but allow a batch of message numbers to fetch several messages in one html request—for index page markup
+
+
