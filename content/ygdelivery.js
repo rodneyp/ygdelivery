@@ -218,8 +218,60 @@ function sprintf () {
 
 addGlobalStyle('.ygperf { padding: 0px 5px 0px 5px; border: 2px solid black; -moz-border-radius: 5px;}');
 
-	
-	var t = Math.random() * (120) +  8;   // seconds in message delivery -- find in message headers
+var email_go = 'data:image/png;base64,' +
+  'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0' + 
+  'U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKESURBVDjLpZO7axRhFMV/38zsy+xuEt2Q' + 
+  '50bYgChGUBAVxUbRRlS0sxJsbP0HFAQJ1jYqtlqYTlARNZoiPlELCxVd0LgxwcnuxmT2MfPN97BI' + 
+  'xAcIggcu91EcLudwhLWW/4HDf8I7feXZw/Sq3JZqEHc0QuUYCwaLNhZjLdpajFneV8oidBy3FquV' + 
+  'd+Wy19PdWTx5eF0+iq1Ip9zf2MWfs1ju7Ui57UgPHDsfhY6/pEpSGXHt4RyVqqQZWaZrhkrdMPPN' + 
+  'MLdo8ANLtWmJNczUJBduzrHQjJxcT3HEaUZapBIOg/157r70+daI6c0LEi4kXUHSEyQ96MoIakuS' + 
+  '8amvdK3Os6YrBSCcVqgAKPVlGerNc+eFz0IQU8g6JD1IutCZFtQDyfiUT2FNntJgFrFintMM9bKa' + 
+  'LpQGsvR0r+L6ZIV6IOlMC3JpQS2QnL99gHcLhygNZMl4v9jYbC9/IASoWJH2DMODXdx67jNTDZmp' + 
+  'htx46hNbxVBhAxcnRkl6P5X1WpHGAlIqvtYDir05kskElx8c4c19jTQKqRUD3SNs6NtOEDY5e2Mt' + 
+  'V0+UwQq8VqSsNlb4tYBiT45MOgEWlJHs23gcbQ3aaAyW2cUKm4Z20ZBtDl4s0Ofcs16z/uVTJNXa' + 
+  '9UMZkc04QjgaBwiVRFvDdO0DsVEoExPrmKUoYHNxN424xfOPu/FkY35676k73alcR4eXcoXnuTiu' + 
+  'oL8YekorevPDKKPR1jC3+JnV2T5eVR7xrFyOE2/PPRF/C9PRSyUdSok0klBJRgobnR2l/bz4/JiJ' + 
+  '93dfS8W22TEbiX9N4+g5Z37r8J7C5PuJl9Kwc3bMSoB/JiidEfPauIW20Ql/zKof9+9pyFaERzUY' + 
+  '+QAAAABJRU5ErkJggg==';
+
+var email_edit = 'data:image/png;base64,' +
+  'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0' + 
+  'U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKGSURBVDjLpZNPSFRhFMV/33vfzDjOvBml' + 
+  'Rkuz0THKIjGN2qSrFkFEBUFBG1fhtkW7aB1UUNDCyIJaRC3aRAXWxkroHxpCRGaY2uS/GWfUGUff' + 
+  'fPPe+1poUbvCs77n3HPvuVdorVkP5P8Ujz3ae0IVtj80w80U5l4i7MlO8a8OfvQmTsvAyXvBjR1E' + 
+  'G1pZGHvD8PNbs/JCz7u+snKrdS5fCi3ZjuFp8NC4nsbTGldrmq234kx7p4hWtJEd/YxfKKzIJsoq' + 
+  '4zEZq4zWdR3bHimWtCgLmH91FYDKvEKlM0QThyhOP8BfLpgYGsb1/Fwe25c0UjknoRxP3OubJjmn' + 
+  'KBQ1ExmPZNYjOdaHSvUSbTyMPdWD8M3jC1tgz2Hu7WK5YvdWo1B0RcBnULs5wvPBFAtLJaojgpXx' + 
+  'x5QvPCO67Sj2ZDeGr4TK1TP1YoiB6vPE6psAhFy2HQASm8IIDb0DKdo3DOLLvaaq/Qhq5hamX2Mv' + 
+  'xpnp/8DgtmtsrGtE6FWeUbDd1TxNSNSEiWaeYWbfo9wapj9ex8OmkK0l2f+JgcQVahsaCf4Rviys' + 
+  'rCoJAU7JwTd9n13Hb/PlwTlG+l8T2NqCPZ9mvu0ivnAMQztIn/y9ZWO56KIBpRxms3lGvqVRn57Q' + 
+  '0NJBKLSDyaFR9IFLNDXvoX6zRXYhj+c4aA1ogVwuOtr1tEhl8tTFLO58TXH1Zjf7dzbgj7fQfOou' + 
+  '/sgWPDSy3I+ssphK51ipCIL2tCxkJ8eLyok3bQmKcNAQN54mMdZGEkKsOfUQvw4DSbzS8sZn8iqX' + 
+  '/jEl1VJ64uDZ3sqAFQrJgCmkNDFMgWmAYQgMucpb00KAdh2lVhbnM+nR5Hex3m80WCd+AqUYHPPw' + 
+  'kaN5AAAAAElFTkSuQmCC';
+
+var text_align_left = 'data:image/png;base64,' +
+  'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAAK/INwWK6QAAABl0RVh0' + 
+  'U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABjSURBVCjPY/zPgB8wMVCqgAVElP//x/AH' + 
+  'DH+D4S8w/sWwl5GBgfE/MSYU/Ifphej8xbCLEaaAOBNS/yPbjIC3iHZD5P9faHqvk+gGbzQTYD76' + 
+  'TLQbbP//hOqE6f5AvBsIRhYAysRMHy5Vf6kAAAAASUVORK5CYII=';
+
+
+var cross = 'data:image/png;base64,' +
+  'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0' + 
+  'U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIhSURBVDjLlZPrThNRFIWJicmJz6BWiYbI' + 
+  'kYDEG0JbBiitDQgm0PuFXqSAtKXtpE2hNuoPTXwSnwtExd6w0pl2OtPlrphKLSXhx07OZM769qy1' + 
+  '9wwAGLhM1ddC184+d18QMzoq3lfsD3LZ7Y3XbE5DL6Atzuyilc5Ciyd7IHVfgNcDYTQ2tvDr5crn' + 
+  '6uLSvX+Av2Lk36FFpSVENDe3OxDZu8apO5rROJDLo30+Nlvj5RnTlVNAKs1aCVFr7b4BPn6Cls21' + 
+  'AWgEQlz2+Dl1h7IdA+i97A/geP65WhbmrnZZ0GIJpr6OqZqYAd5/gJpKox4Mg7pD2YoC2b0/54rJ' + 
+  'QuJZdm6Izcgma4TW1WZ0h+y8BfbyJMwBmSxkjw+VObNanp5h/adwGhaTXF4NWbLj9gEONyCmUZmd' + 
+  '10pGgf1/vwcgOT3tUQE0DdicwIod2EmSbwsKE1P8QoDkcHPJ5YESjgBJkYQpIEZ2KEB51Y6y3ojv' + 
+  'Y+P8XEDN7uKS0w0ltA7QGCWHCxSWWpwyaCeLy0BkA7UXyyg8fIzDoWHeBaDN4tQdSvAVdU1Aok+n' + 
+  'sNTipIEVnkywo/FHatVkBoIhnFisOBoZxcGtQd4B0GYJNZsDSiAEadUBCkstPtN3Avs2Msa+Dt9X' + 
+  'fxoFSNYF/Bh9gP0bOqHLAm2WUF1YQskwrVFYPWkf3h1iXwbvqGfFPSGW9Eah8HSS9fuZDnS32f71' + 
+  'm8KFY7xs/QZyu6TH2+2+FAAAAABJRU5ErkJggg==';
+
+var t = Math.random() * (120) +  8;   // seconds in message delivery -- find in message headers
 
 
 // really, there is some way to get just the one matching div instead of pretending to loop through them
@@ -705,7 +757,7 @@ if (new String(window.location).match(/message\//)) {
 
                     var img = document.createElement('img');
                     img.style.margin = "1px";
-                    img.setAttribute('src', 'http://www.famfamfam.com/lab/icons/silk/icons/email_go.png');
+                    img.setAttribute('src', email_go);
                     img.setAttribute('alt', 'Compose');
                     img.setAttribute('title', 'Compose Message with Summary Info');
                     img.style.backgroundColor = 'white';
@@ -715,7 +767,7 @@ if (new String(window.location).match(/message\//)) {
 
                     var img = document.createElement('img');
                     img.style.margin = "1px";
-                    img.setAttribute('src', 'http://www.famfamfam.com/lab/icons/silk/icons/email_edit.png');
+                    img.setAttribute('src', email_edit);
                     img.setAttribute('alt', 'Paste');
                     img.setAttribute('title', 'Paste in Message Text to Analyze');
                     img.style.backgroundColor = 'white';
@@ -725,7 +777,7 @@ if (new String(window.location).match(/message\//)) {
                     var img = document.createElement('img');
                     img.style.margin = "1px";
 
-                    img.setAttribute('src', 'http://www.famfamfam.com/lab/icons/silk/icons/text_align_left.png');
+                    img.setAttribute('src', text_align_left);
                     img.setAttribute('alt', 'Show Headers');
                     img.setAttribute('title', 'Show/Hide Headers');
                     img.style.backgroundColor = 'white';
@@ -736,7 +788,7 @@ if (new String(window.location).match(/message\//)) {
                     var img = document.createElement('img');
                     img.style.margin = "1px";
 
-                    img.setAttribute('src', 'http://www.famfamfam.com/lab/icons/silk/icons/cross.png');
+                    img.setAttribute('src', cross);
                     img.setAttribute('alt', '(X)');
                     img.setAttribute('title', 'Close Header Inspector');
                     img.style.backgroundColor = 'white';
